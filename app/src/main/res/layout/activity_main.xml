@@ -14,4 +14,15 @@
         android:layout_margin="20dp"
         android:id="@+id/fab"/>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="20dp"
+        android:id="@+id/fab1"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

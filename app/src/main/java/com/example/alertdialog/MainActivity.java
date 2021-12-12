@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-private FloatingActionButton fab;
+private FloatingActionButton fab,fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +21,7 @@ private FloatingActionButton fab;
 
 
         fab = findViewById(R.id.fab);
+        fab1 = findViewById(R.id.fab1);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +41,13 @@ private FloatingActionButton fab;
                     }
                 });
 
+                builder.setNeutralButton("okcancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
                 builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -49,5 +59,37 @@ private FloatingActionButton fab;
                 dialog.show();
             }
         });
+
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AlertDialog.Builder customBuilder = new AlertDialog.Builder(MainActivity.this);
+
+                customBuilder.setTitle("register");
+
+                View view  = getLayoutInflater().inflate(R.layout.custom_layout,null);
+
+                Button ok = view.findViewById(R.id.ok);
+                Button cancel = view.findViewById(R.id.cancel);
+
+
+                customBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                customBuilder.setView(view);
+
+                AlertDialog dialog = customBuilder.create();
+
+                dialog.show();
+            }
+        });
     }
+
+
 }
