@@ -8,16 +8,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText name,surname;
 private FloatingActionButton fab,fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         fab = findViewById(R.id.fab);
@@ -71,14 +74,15 @@ private FloatingActionButton fab,fab1;
 
                 View view  = getLayoutInflater().inflate(R.layout.custom_layout,null);
 
-                Button ok = view.findViewById(R.id.ok);
-                Button cancel = view.findViewById(R.id.cancel);
-
 
                 customBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                     name=view.findViewById(R.id.name);
+                     surname=view.findViewById(R.id.surname);
+                     String n=name.getText().toString();
+                     String s=surname.getText().toString();
+                     Toast.makeText(MainActivity.this, n+s,Toast.LENGTH_LONG).show();
                     }
                 });
 
