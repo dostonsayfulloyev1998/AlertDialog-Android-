@@ -33,6 +33,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
+    public void addItem(String login,String parol){
+        list.add(new ModelKlass(login,parol));
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         String login=list.get(position).getLogin();
@@ -40,7 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.parol1.setText(parol);
         holder.login1.setText(login);
-
 
     }
 
@@ -58,6 +62,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             login1=itemView.findViewById(R.id.tv1);
             parol1=itemView.findViewById(R.id.tv2);
         }
+
+
     }
     interface OnItemClick{
         void onItemClick(int i, View v);

@@ -1,6 +1,7 @@
 package com.example.alertdialog;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -16,9 +17,8 @@ public class MainActivity2 extends AppCompatActivity implements MyDialogFragment
     private ArrayList<ModelKlass> list;
     private MyAdapter myAdapter;
     private RecyclerView recyclerView;
+    private FloatingActionButton fab;
 
-private FloatingActionButton fab;
-private TextView loginText,parolText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,12 @@ private TextView loginText,parolText;
         fab =findViewById(R.id.fab);
         recyclerView=findViewById(R.id.res);
 
+         loaddata();
+         myAdapter = new MyAdapter(list,this);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(manager);
 
+         recyclerView.setAdapter(myAdapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,8 +45,7 @@ private TextView loginText,parolText;
 
     @Override
     public void applyText(String login, String parol) {
-          loginText.setText(login);
-          parolText.setText(parol);
+            myAdapter.addItem(login,parol);
     }
     private void loaddata(){
         list=new ArrayList<>();
